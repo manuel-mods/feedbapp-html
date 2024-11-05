@@ -29,7 +29,7 @@
         </header>
 
         <main class="p-3">
-          <div class="container mt-4">
+          <div class="container mt-4 col-12 col-md-6 col-lg-5">
             <h2 class="text-center mb-4">Deja tu Feedback</h2>
 
             <!-- Información del Usuario -->
@@ -54,13 +54,16 @@
             <form id="feedbackForm">
               <!-- Puntuación con Estrellas -->
               <div class="mb-4">
-                <h5 class="mb-2">Puntuación</h5>
+                <h5 class="mb-2">
+                  Puntuación
+                  <span id="numberStar"></span>
+                </h5>
                 <div id="rating" class="d-flex">
-                  <i class="fas fa-star text-muted" data-rating="1"></i>
-                  <i class="fas fa-star text-muted" data-rating="2"></i>
-                  <i class="fas fa-star text-muted" data-rating="3"></i>
-                  <i class="fas fa-star text-muted" data-rating="4"></i>
-                  <i class="fas fa-star text-muted" data-rating="5"></i>
+                  <i class="fas fa-star text-muted" onclick="setStar(1)"></i>
+                  <i class="fas fa-star text-muted" onclick="setStar(2)"></i>
+                  <i class="fas fa-star text-muted" onclick="setStar(3)"></i>
+                  <i class="fas fa-star text-muted" onclick="setStar(4)"></i>
+                  <i class="fas fa-star text-muted" onclick="setStar(5)"></i>
                 </div>
                 <input type="hidden" id="ratingValue" name="ratingValue" value="0" />
               </div>
@@ -81,52 +84,6 @@
               </div>
             </form>
           </div>
-
-          <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-          <script>
-            // Variable para almacenar la puntuación seleccionada
-            let selectedRating = 0;
-
-            // Añadir evento de clic a las estrellas para seleccionar puntuación
-            document.querySelectorAll('#rating .fa-star').forEach((star) => {
-              star.addEventListener('click', function () {
-                selectedRating = this.getAttribute('data-rating');
-                document.getElementById('ratingValue').value = selectedRating;
-                updateStarColors(selectedRating);
-              });
-            });
-
-            // Función para actualizar los colores de las estrellas seleccionadas
-            function updateStarColors(rating) {
-              document.querySelectorAll('#rating .fa-star').forEach((star) => {
-                if (star.getAttribute('data-rating') <= rating) {
-                  star.classList.remove('text-muted');
-                  star.classList.add('text-warning');
-                } else {
-                  star.classList.remove('text-warning');
-                  star.classList.add('text-muted');
-                }
-              });
-            }
-
-            // Validación y envío del formulario con SweetAlert
-            document.getElementById('feedbackForm').addEventListener('submit', function (event) {
-              event.preventDefault();
-              const ratingValue = document.getElementById('ratingValue').value;
-              const comment = document.getElementById('feedbackComment').value.trim();
-
-              if (ratingValue == 0) {
-                swal(
-                  'Error',
-                  'Por favor selecciona una puntuación antes de enviar tu feedback.',
-                  'error'
-                );
-              } else {
-                swal('¡Gracias!', 'Tu feedback ha sido enviado exitosamente.', 'success');
-              }
-            });
-          </script>
-
           <div
             class="w-100 text-center d-flex align-items-center justify-content-center p-3 gap-2 small">
             Perfil creado en
@@ -144,7 +101,49 @@
     <!-- Font Awesome CDN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
     <!-- Custom JS -->
-    <script src="script.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      // Inicializar la puntuación seleccionada
+      let selectedRating = 0;
+
+      // Función para seleccionar la cantidad de estrellas
+      function setStar(rating) {
+        selectedRating = rating;
+        document.getElementById('ratingValue').value = selectedRating;
+        document.getElementById('numberStar').innerText = `(${selectedRating})`;
+        updateStarColors(rating);
+      }
+
+      // Función para actualizar el color de las estrellas según la puntuación
+      function updateStarColors(rating) {
+        const stars = document.querySelectorAll('#rating .fa-star');
+        stars.forEach((star, index) => {
+          if (index < rating) {
+            star.classList.remove('text-muted');
+            star.classList.add('text-warning');
+          } else {
+            star.classList.remove('text-warning');
+            star.classList.add('text-muted');
+          }
+        });
+      }
+
+      // Validación y envío del formulario con SweetAlert
+      document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const ratingValue = document.getElementById('ratingValue').value;
+        const comment = document.getElementById('feedbackComment').value.trim();
+
+        if (ratingValue == 0) {
+          swal(
+            'Error',
+            'Por favor selecciona una puntuación antes de enviar tu feedback.',
+            'error'
+          );
+        } else {
+          swal('¡Gracias!', 'Tu feedback ha sido enviado exitosamente.', 'success');
+        }
+      });
+    </script>
   </body>
 </html>

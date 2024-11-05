@@ -51,4 +51,6 @@ function validateProfileConfig(event) {
 }
 
 // Asignar el evento de validación al formulario
-document.querySelector('form').addEventListener('submit', validateProfileConfig);
+if (document.querySelector('form')) {
+  document.querySelector('form').addEventListener('submit', validateProfileConfig);
+}
