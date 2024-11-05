@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedbapp - Historial</title>
+
+    <!-- Bootstrap 5 CDN-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="d-flex">
+      <!-- Sidebar -->
+      <nav class="sidebar bg-light p-3" id="sidebar">
+        <button
+          type="button"
+          class="btn d-lg-none d-block"
+          id="closeSidebar"
+          onclick="toggleSidebar()">
+          <i class="fa fa-times"></i>
+        </button>
+
+        <div class="d-flex align-items-center mb-4 just">
+          <img src="images/feedbapp-logo.png" class="logo" />
+        </div>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <a class="nav-link" href="index.html">
+              <i class="fas fa-tachometer-alt me-2"></i>
+              Inicio
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link" href="history.html">
+              <i class="fas fa-wallet me-2"></i>
+              Historial de Feedback
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link" href="profile.html">
+              <i class="fas fa-water me-2"></i>
+              Perfil Feedbapp
+            </a>
+          </li>
+          <li class="nav-item mt-auto">
+            <a class="nav-link" href="config.html">
+              <i class="fas fa-cog me-2"></i>
+              Configuración
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">
+              <i class="fas fa-sign-out-alt me-2"></i>
+              Cerrar sesión
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main content -->
+      <div class="flex-grow-1">
+        <!-- Header -->
+        <header class="d-flex justify-content-between align-items-center p-3 border-bottom">
+          <div>
+            <button class="btn btn-primary d-lg-none" id="sidebarToggle" onclick="toggleSidebar()">
+              <i class="fas fa-bars" id="sidebarToggleIcon"></i>
+            </button>
+          </div>
+          <div></div>
+          <div class="d-flex align-items-center">
+            <div class="">
+              <a
+                href="#"
+                class="text-dark text-decoration-none"
+                id="dropdownUser"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <span class="ms-2 small fw-bold text-white">
+                  demo@feedbapp.cl
+                  <!-- <i class="fas fa-user ms-2"></i> -->
+                </span>
+                <img
+                  src="https://randomuser.me/api/portraits/women/48.jpg"
+                  alt="Avatar"
+                  class="rounded-circle"
+                  width="30" />
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <main class="p-3">
+          <div class="container mt-4">
+            <div class="row">
+              <h2 class="mb-4">Mi Perfil Feedbapp</h2>
+              <div class="col-3">
+                <!-- Información del Usuario -->
+                <div class="card shadow-sm mb-2">
+                  <div class="card-body text-center">
+                    <!-- Foto del Usuario -->
+                    <img
+                      src="https://randomuser.me/api/portraits/men/10.jpg"
+                      alt="Avatar"
+                      class="rounded-circle mb-3"
+                      width="120"
+                      height="120" />
+                    <!-- Nombre de Usuario y Correo -->
+                    <h4 class="mb-1">Juan Pérez</h4>
+                    <div>
+                      <i class="fa fa-envelope"></i>
+                      demo@feedbapp.cl
+                    </div>
+                    <p class="text-muted">@juan.perez</p>
+                    <a class="btn btn-primary btn-sm" href="config.html">Editar Perfil</a>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <a class="btn" href="public-profile.html">Ver tu Perfil</a>
+                </div>
+              </div>
+              <div class="col-9">
+                <!-- Previsualización del Perfil -->
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title text-center mb-4">Previsualización de mi Perfil</h5>
+
+                    <div class="d-flex align-items-center mb-3">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/10.jpg"
+                        alt="Avatar"
+                        class="rounded-circle me-3"
+                        width="60"
+                        height="60" />
+                      <div>
+                        <div class="float-end fw-bold small">
+                          Puntuación (4.0)
+                          <div>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-muted"></i>
+                          </div>
+                        </div>
+
+                        <h5 class="mb-0">Juan Pérez</h5>
+                        <small class="text-muted">Miembro desde 2024</small>
+                        <p>
+                          Me gusta la tecnología y la música. Soy fanático de los videojuegos y me
+                          encanta la comida italiana. 🎮🍕
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Información de Feedback -->
+                    <hr />
+                    <div class="row">
+                      <!-- Feedback 1 -->
+                      <div class="col-12 mb-3">
+                        <div class="card shadow-sm">
+                          <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center">
+                                <img
+                                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                                  alt="Avatar"
+                                  class="rounded-circle me-3"
+                                  width="50"
+                                  height="50" />
+                                <div>
+                                  <h5 class="mb-0">Carlos Martínez</h5>
+                                  <small class="text-muted">02/11/2024</small>
+                                </div>
+                              </div>
+                              <button class="btn btn-outline-danger btn-sm">
+                                Reportar Feedback
+                              </button>
+                            </div>
+
+                            <p class="mt-3">
+                              "La calidad del producto superó mis expectativas. Excelente atención y
+                              rapidez en la entrega."
+                            </p>
+
+                            <div class="feedback-rating">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <span class="ms-2">5.0</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Feedback 2 -->
+                      <div class="col-12 mb-3">
+                        <div class="card shadow-sm">
+                          <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center">
+                                <img
+                                  src="https://randomuser.me/api/portraits/women/45.jpg"
+                                  alt="Avatar"
+                                  class="rounded-circle me-3"
+                                  width="50"
+                                  height="50" />
+                                <div>
+                                  <h5 class="mb-0">Lucía Fernández</h5>
+                                  <small class="text-muted">28/10/2024</small>
+                                </div>
+                              </div>
+                              <button class="btn btn-outline-danger btn-sm">
+                                Reportar Feedback
+                              </button>
+                            </div>
+
+                            <p class="mt-3">
+                              "El producto llegó en buenas condiciones, aunque tardó un poco más de
+                              lo esperado."
+                            </p>
+
+                            <div class="feedback-rating">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-muted"></i>
+                              <span class="ms-2">4.0</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Feedback 3 -->
+                      <div class="col-12 mb-3">
+                        <div class="card shadow-sm">
+                          <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center">
+                                <img
+                                  src="https://randomuser.me/api/portraits/men/52.jpg"
+                                  alt="Avatar"
+                                  class="rounded-circle me-3"
+                                  width="50"
+                                  height="50" />
+                                <div>
+                                  <h5 class="mb-0">Miguel Rodríguez</h5>
+                                  <small class="text-muted">25/10/2024</small>
+                                </div>
+                              </div>
+                              <button class="btn btn-outline-danger btn-sm">
+                                Reportar Feedback
+                              </button>
+                            </div>
+
+                            <p class="mt-3">
+                              "Buena relación calidad-precio, sin embargo, el empaque podría
+                              mejorar."
+                            </p>
+
+                            <div class="feedback-rating">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star-half-alt text-warning"></i>
+                              <i class="fas fa-star text-muted"></i>
+                              <span class="ms-2">3.5</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Feedback 4 -->
+                      <div class="col-12 mb-3">
+                        <div class="card shadow-sm">
+                          <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center">
+                                <img
+                                  src="https://randomuser.me/api/portraits/women/55.jpg"
+                                  alt="Avatar"
+                                  class="rounded-circle me-3"
+                                  width="50"
+                                  height="50" />
+                                <div>
+                                  <h5 class="mb-0">Sofía López</h5>
+                                  <small class="text-muted">20/10/2024</small>
+                                </div>
+                              </div>
+                              <button class="btn btn-outline-danger btn-sm">
+                                Reportar Feedback
+                              </button>
+                            </div>
+
+                            <p class="mt-3">
+                              "El producto es tal como se describe, y el servicio fue muy atento."
+                            </p>
+
+                            <div class="feedback-rating">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <span class="ms-2">5.0</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Feedback 5 -->
+                      <div class="col-12 mb-3">
+                        <div class="card shadow-sm">
+                          <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="d-flex align-items-center">
+                                <img
+                                  src="https://randomuser.me/api/portraits/men/44.jpg"
+                                  alt="Avatar"
+                                  class="rounded-circle me-3"
+                                  width="50"
+                                  height="50" />
+                                <div>
+                                  <h5 class="mb-0">Javier Ortega</h5>
+                                  <small class="text-muted">15/10/2024</small>
+                                </div>
+                              </div>
+                              <button class="btn btn-outline-danger btn-sm">
+                                Reportar Feedback
+                              </button>
+                            </div>
+
+                            <p class="mt-3">
+                              "Tuve algunos problemas con el producto, pero el servicio de atención
+                              fue rápido en responder."
+                            </p>
+
+                            <div class="feedback-rating">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-muted"></i>
+                              <i class="fas fa-star text-muted"></i>
+                              <span class="ms-2">3.0</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div id="overlay"></div>
+
+    <!-- Boostrap 5 JS CDN-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <!-- Font Awesome CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </body>
+</html>

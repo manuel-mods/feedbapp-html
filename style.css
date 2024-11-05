@@ -1,0 +1,207 @@
+/* Estilos adicionales para el sidebar */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body {
+  font-family: 'Ubuntu', sans-serif !important;
+}
+.sidebar {
+    width: 300px;
+    min-height: 100vh;
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para la separación */
+  }
+  
+  .sidebar .nav-link {
+    color: #6c757d; /* Color gris para los enlaces */
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .sidebar .nav-link.active {
+    color: #ffffff;
+    background-color: #007bff; /* Fondo azul para el enlace activo */
+  }
+  
+  .sidebar .nav-link:hover {
+    background-color: rgba(0, 123, 255, 0.7); /* Fondo azul claro al pasar el mouse */
+    color: white;
+  }
+  
+  /* Estilos adicionales para el header */
+  header {
+    background-color: #007bff; /* Fondo gris claro */
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1); /* Sombra en el header */
+  }
+  
+  header .form-control {
+    max-width: 300px; /* Ancho de la barra de búsqueda */
+    border: 1px solid #007bff; /* Borde azul en la barra de búsqueda */
+  }
+  
+  header .dropdown-toggle {
+    color: #212529;
+  }
+  
+  /* Estilos de contenedores */
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+    border-radius: 0.5rem;
+    border: 1px solid #dee2e6; /* Borde gris claro */
+  }
+  
+  .card h5 {
+    font-weight: 600;
+    color: #6c757d; /* Tono gris para el título */
+  }
+  
+  .card h3 {
+    font-weight: bold;
+    color: #212529; /* Color oscuro para el saldo */
+  }
+  
+  .card-feedback {
+    border-left: 4px solid #007bff; /* Borde azul para feedback dado */
+  }
+  
+  .card-received {
+    border-left: 4px solid #ffc107; /* Borde amarillo para feedback recibido */
+  }
+  
+  .card-average {
+    border-left: 4px solid #28a745; /* Borde verde para promedio de puntaje */
+  }
+  
+  /* Estilo de la tabla de actividad reciente */
+  .table-borderless tbody tr {
+    transition: background-color 0.2s ease;
+  }
+  
+  .table-borderless tbody tr:hover {
+    background-color: #f8f9fa; /* Fondo gris claro al pasar el mouse */
+  }
+  
+  .badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+  }
+  
+  header .badge {
+    font-size: 0.55rem; /* Tamaño de fuente para el número */
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff; /* Texto blanco */
+    background-color: #dc3545; /* Fondo rojo */
+    border-radius: 50%; /* Forma circular */
+    position: absolute;
+    top: -5px;
+    right: -10px; /* Ajuste de posición para centrar mejor el badge */
+  }
+  
+  /* Estilo personalizado para inputs */
+  .form-control {
+    border: 1px solid #007bff; /* Borde azul para los inputs */
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #0056b3; /* Borde azul oscuro al enfocar */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra azul al enfocar */
+  }
+  
+  /* Colores recomendados para el feedback */
+  .feedback-positive {
+    color: #28a745; /* Verde para feedback positivo */
+  }
+  
+  .feedback-neutral {
+    color: #ffc107; /* Amarillo para feedback neutral */
+  }
+  
+  .feedback-negative {
+    color: #dc3545; /* Rojo para feedback negativo */
+  }
+  
+  /* Estilo para el gráfico de feedback en el dashboard */
+  #feedbackChart {
+    max-height: 400px;
+  }
+  
+  /* Hover en cards para mejorar la experiencia visual */
+  .card:hover {
+    border-color: #007bff; /* Borde azul al pasar el mouse */
+    box-shadow: 0 6px 
+  }
+
+
+
+  .logo {
+    max-width: 250px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
+
+  .sidebar {
+    display: block; /* Sidebar visible por defecto */
+    transition: transform 0.3s ease; /* Animación de desplazamiento */
+  }
+  
+  @media (max-width: 992px) {
+    .sidebar {
+      display: none; /* Ocultar en pantallas pequeñas */
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      height: 100vh;
+      width: 250px;
+      background-color: #f8f9fa;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transform: translateX(-100%); /* Oculto fuera de la pantalla */
+    }
+  
+    /* Cuando el sidebar está visible */
+    .sidebar.show {
+      display: block;
+      transform: translateX(0); /* Desliza hacia adentro */
+    }
+  
+    /* Fondo de overlay para cuando el sidebar está visible */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+  
+    #overlay.active {
+      display: block;
+    }
+  }
+  
+  /* Botón de cerrar para el sidebar */
+  .btn-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #212529;
+    z-index: 999;
+  }
+
+  main {
+    height: calc(100vh - 90px); /* Restar el alto del header */
+    overflow-y: scroll;
+  }
